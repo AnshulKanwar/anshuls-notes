@@ -1,9 +1,16 @@
 import Head from "next/head";
+import styled from "styled-components";
 import Navbar from "./navbar";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
+
+const Content = styled.div`
+  max-width: 800px;
+  margin: 3em auto;
+  padding: 2em;
+`
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
@@ -14,7 +21,9 @@ const Layout: React.FC<Props> = ({ children }) => {
       </Head>
       <div>
         <Navbar />
-        {children}
+        <Content>
+          {children}
+        </Content>
       </div>
     </div>
   );

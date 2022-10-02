@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { getTopics } from "../lib/notes";
 
 const StyledNavbar = styled.div`
   display: flex;
@@ -15,25 +16,21 @@ const NavItems = styled.div`
   gap: 1.5em;
 `
 
-const NavLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-
-  &:hover {
-    text-decoration: underline;
-  }
+const Logo = styled.h1`
+  font-size: 1.5rem;
 `
-
 const Navbar = () => {
   return (
     <StyledNavbar>
       <NavItems>
-        <h1>Anshul&#39;s Notes</h1>
-        <Link href="/networking" passHref><NavLink>Networking</NavLink></Link>
+        <Logo>Anshul&#39;s Notes</Logo>
+        <Link href="/react" passHref>React</Link>
+        <Link href="/networking" passHref>Networking</Link>
+        <Link href="/machine-learning" passHref>Machine Learning</Link>
       </NavItems>
       <NavItems>
-        <NavLink href="#">Change Theme</NavLink>
-        <NavLink href="#">github</NavLink>
+        <Link href="#">Change Theme</Link>
+        <a href="#">github</a>
       </NavItems>
     </StyledNavbar>
   );
