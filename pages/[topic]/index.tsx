@@ -1,30 +1,43 @@
-import { getTopicPaths } from "../../lib/notes";
+import type { NextPage } from "next";
+import Link from "next/link";
+import Layout from "../../components/layout";
+import { getTopicIds, getSortedNotesData } from "../../lib/notes";
 
 interface Props {
-  notes: any;
+  topic: string
+  allNotes: { id: string; title: string; excerpt: string }[];
 }
 
-const Notes: React.FC<Props> = ({ notes }) => {
-  return <div>notes</div>;
+const Notes: NextPage<Props> = ({ topic, allNotes }) => {
+  return (
+    <Layout>
+      {allNotes.map((notes) => (
+        <div key={notes.id}>
+          <Link href={`${topic}/${notes.id}`}>{notes.title}</Link>
+        </div>
+      ))}
+    </Layout>
+  );
 };
 
 export async function getStaticPaths() {
-  const topics = getTopicPaths();
+  const topics = getTopicIds();
   return {
     paths: topics,
     fallback: false,
   };
 }
 
-interface StaticProps {
+interface Params {
   params: {
     topic: string;
   };
 }
 
-export async function getStaticProps({ params: { topic } }: StaticProps) {
+export async function getStaticProps({ params: { topic } }: Params) {
+  const allNotes = getSortedNotesData(topic);
   return {
-    props: { notes: {} },
+    props: { topic, allNotes },
   };
 }
 

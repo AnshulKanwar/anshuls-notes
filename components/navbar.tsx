@@ -23,13 +23,12 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <NavItems>
-        <Logo>Anshul&#39;s Notes</Logo>
+        <Logo><Link href="/">Anshul&#39;s Notes</Link></Logo>
         <Link href="/react" passHref>React</Link>
         <Link href="/networking" passHref>Networking</Link>
         <Link href="/machine-learning" passHref>Machine Learning</Link>
       </NavItems>
       <NavItems>
-        <Link href="#">Change Theme</Link>
         <a href="#">github</a>
       </NavItems>
     </StyledNavbar>
