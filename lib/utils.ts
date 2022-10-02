@@ -1,4 +1,7 @@
+export function capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
 export function kebabCaseToUpperCase(s: string): string {
-    const lowerCase = s.replace('-', ' ')
-    return lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1)
+    return capitalize(s.replace('-', ' '))
 }

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { TbBrandGithub } from "react-icons/tb";
 import { getTopics } from "../lib/notes";
+import ThemeToggle from "./themeToggle";
 
 const StyledNavbar = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 1em 0;
+  padding: 1em 0;
 `;
 
 const NavItems = styled.div`
@@ -14,22 +16,42 @@ const NavItems = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1.5em;
-`
+`;
+
+const NavItem = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+`;
 
 const Logo = styled.h1`
   font-size: 1.5rem;
-`
+`;
+
 const Navbar = () => {
   return (
     <StyledNavbar>
       <NavItems>
-        <Logo><Link href="/">Anshul&#39;s Notes</Link></Logo>
-        <Link href="/react" passHref>React</Link>
-        <Link href="/networking" passHref>Networking</Link>
-        <Link href="/machine-learning" passHref>Machine Learning</Link>
+        <NavItem>
+          <Logo>
+            <Link href="/">Anshul&#39;s Notes</Link>
+          </Logo>
+        </NavItem>
       </NavItems>
       <NavItems>
-        <a href="#">github</a>
+        <NavItem>
+          <ThemeToggle />
+        </NavItem>
+        <a
+          href="https://github.com/AnshulKanwar/anshuls-notes"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <NavItem>
+            <TbBrandGithub /> github
+          </NavItem>
+        </a>
       </NavItems>
     </StyledNavbar>
   );

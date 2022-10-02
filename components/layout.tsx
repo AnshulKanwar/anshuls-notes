@@ -6,6 +6,12 @@ interface Props {
   children?: React.ReactNode;
 }
 
+const Container = styled.div`
+  background-color: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+`
+
 const Content = styled.div`
   max-width: 800px;
   margin: 3em auto;
@@ -14,7 +20,7 @@ const Content = styled.div`
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div>
+    <Container>
       <Head>
         <title>Anshul&#39;s Notes</title>
         <link rel="icon" href="/favicon.ico" />
@@ -25,7 +31,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           {children}
         </Content>
       </div>
-    </div>
+    </Container>
   );
 };
 

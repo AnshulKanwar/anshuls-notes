@@ -1,21 +1,28 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import Card from "../../components/card";
+import Cards from "../../components/cards";
 import Layout from "../../components/layout";
 import { getTopicIds, getSortedNotesData } from "../../lib/notes";
+import { capitalize } from "../../lib/utils";
 
 interface Props {
-  topic: string
+  topic: string;
   allNotes: { id: string; title: string; excerpt: string }[];
 }
 
 const Notes: NextPage<Props> = ({ topic, allNotes }) => {
   return (
     <Layout>
-      {allNotes.map((notes) => (
-        <div key={notes.id}>
-          <Link href={`${topic}/${notes.id}`}>{notes.title}</Link>
-        </div>
-      ))}
+      <h1>{ capitalize(topic) }</h1>
+      <Cards>
+        {allNotes.map((notes) => (
+          <Card
+            key={notes.id}
+            title={notes.title}
+            href={`${topic}/${notes.id}`}
+          />
+        ))}
+      </Cards>
     </Layout>
   );
 };

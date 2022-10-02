@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import styled, { css } from "styled-components";
+import Cards from "../components/cards";
+import Card from "../components/card";
 import Layout from "../components/layout";
 import { getTopics } from "../lib/notes";
-import { kebabCaseToUpperCase } from "../lib/utils";
 
 interface Props {
   topics: string[];
@@ -12,11 +11,18 @@ interface Props {
 const Home: NextPage<Props> = ({ topics }) => {
   return (
     <Layout>
-      {topics.map((topic) => (
-        <div key={topic}>
-          <Link href={topic}>{kebabCaseToUpperCase(topic)}</Link>
-        </div>
-      ))}
+      <div>
+        <h1>Anshul&#39;s Notes</h1>
+        <span>
+          This site contains all of my notes and resources from various computer
+          science fields
+        </span>
+      </div>
+      <Cards>
+        {topics.map((topic) => (
+          <Card key={topic} title={topic} href={topic}/>
+        ))}
+      </Cards>
     </Layout>
   );
 };
