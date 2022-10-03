@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   max-width: 800px;
-  margin: 3em auto;
+  margin: 1em auto;
   padding: 2em;
 `
 

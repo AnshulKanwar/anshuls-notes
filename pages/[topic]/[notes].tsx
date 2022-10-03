@@ -1,23 +1,30 @@
 import type { NextPage } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import styled from "styled-components";
 import Layout from "../../components/layout";
 import { getNoteIds, getNotesData } from "../../lib/notes";
 
+const Main = styled.main`
+  max-width: 60ch;
+  margin: 0 auto;
+`;
+
 interface Props {
-  title: string,
-  excerpt: string,
-  source: MDXRemoteSerializeResult,
+  title: string;
+  excerpt: string;
+  source: MDXRemoteSerializeResult;
 }
 
 const Notes: NextPage<Props> = ({ title, excerpt, source }) => {
   return (
     <Layout>
-      <h1>{title}</h1>
-      <p>{excerpt}</p>
-      <main>
+      <Main>
+        <h1>{title}</h1>
+        <p>{excerpt}</p>
+        <hr />
         <MDXRemote {...source} />
-      </main>
+      </Main>
     </Layout>
   );
 };

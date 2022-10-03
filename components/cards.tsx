@@ -5,6 +5,10 @@ const StyledCards = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 interface Props {

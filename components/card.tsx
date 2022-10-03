@@ -7,17 +7,14 @@ const StyledCard = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  background-color: var(--fg);
-  color: var(--bg);
-  border: 2px solid var(--fg);
+  background-color: ${props => props.color};
+  color: white;
   border-radius: 8px;
   transition: all 0.2s ease;
+  cursor: pointer;
 
   &:hover {
-    background-color: var(--bg);
-    color: var(--fg);
-    border: 2px solid var(--fg);
-    cursor: pointer;
+    filter: brightness(90%);
   }
 `;
 
@@ -28,13 +25,14 @@ const CardLink = styled.a`
 `;
 interface Props {
   title: string;
-  href: string
+  href: string;
+  color: string;
 }
 
-const Card: React.FC<Props> = ({ title, href }) => {
+const Card: React.FC<Props> = ({ title, href, color }) => {
   return (
     <Link href={href} passHref>
-      <StyledCard>
+      <StyledCard color={color}>
         <CardLink>{kebabCaseToUpperCase(title)}</CardLink>
         <TbArrowRight />
       </StyledCard>

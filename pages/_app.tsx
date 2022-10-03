@@ -7,11 +7,13 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --fg: #000;
     --bg: #fff;
+    --accent: #1879db;
   }
 
   [data-theme="dark"] {
     --fg: #fff;
     --bg: #000;
+    --accent: #1879db;
   }
 `;
 
